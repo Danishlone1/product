@@ -1,0 +1,26 @@
+<table class="table table-bordered table-dark">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Product Name</th>
+    <th scope="col">Stock</th>
+    <th scope="col">Quota</th>
+    <th scope="col">Price</th>
+    <th scope = "col">Met Quota?</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let tempProducts of productList">
+    <td>{{ tempProducts.pId }}</td>
+    <td>{{ tempProducts.pName }}</td>
+    <td>{{ tempProducts.stock }}</td>
+    <td>{{ tempProducts.quota }}</td>
+    <td>{{ tempProducts.price | currency: 'INR':'code' }}</td>
+
+   <td> <div *ngIf="tempProducts.quota>10000;else myElseBlock">Yes</div>
+    <ng-template #myElseBlock>No</ng-template>
+    </td>
+  </tr>
+  </tbody>
+</table>
